@@ -86,6 +86,7 @@ void UzytkownikMenedzer::logowanieUzytkownika()
         {
             for (int iloscProb = 3; iloscProb > 0; iloscProb--)
             {
+                idZalogowanegoUzytkownika = itr -> pobierzId();
                 cout << "Podaj haslo. Pozostalo prob: " << iloscProb << ": ";
                 haslo = MetodyPomocnicze::wczytajLinie();
 
@@ -117,9 +118,6 @@ void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika()
     string noweHaslo = "";
     cout << "Podaj nowe haslo: ";
     noweHaslo = MetodyPomocnicze::wczytajLinie();
-
-    cout << "nowe haslo: "<<noweHaslo<<endl;
-    cout << "idZalogowanegoUzytkownika: "<<idZalogowanegoUzytkownika<<endl;
 
     for (vector <Uzytkownik>::iterator itr = uzytkownicy.begin(); itr != uzytkownicy.end(); itr++)
     {
