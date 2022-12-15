@@ -11,6 +11,8 @@ class MetodyPomocnicze
 public:
     static string konwerjsaIntNaString(int liczba);
     static string wczytajLinie();
+    static string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
+    static string pobierzLiczbe(string tekst, int pozycjaZnaku);
 };
 
 #endif
