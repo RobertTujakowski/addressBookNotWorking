@@ -21,13 +21,13 @@ class AdresatMenedzer
     int idOstatniegoAdresata;
     int idZalogowanegoUzytkownika;
 
-    void pobierzDaneAdresata();
+    Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
     Adresat  podajDaneNowegoAdresata();
-    void pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami();
+    int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
     void wyswietlDaneAdresata(Adresat adresat);
 
 public:
-    AdresatMenedzer(string nazwaPlikuZAdresatami) : plikZAdresatami(nazwaPlikuZAdresatami){};
+    AdresatMenedzer(string nazwaPlikuZAdresatami) : plikZAdresatami(nazwaPlikuZAdresatami){}; // przekazanie nazwy pliku, : lista inicjalizacyjna
     void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
     void dodajAdresata();
     void wyswietlWszystkichAdresatow();

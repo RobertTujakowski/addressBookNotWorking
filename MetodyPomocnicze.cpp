@@ -26,7 +26,7 @@ string MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst
     return tekst;
 }
 
-string pobierzLiczbe(string tekst, int pozycjaZnaku)
+string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku)
 {
     string liczba = "";
     while(isdigit(tekst[pozycjaZnaku]) == true)
@@ -35,4 +35,13 @@ string pobierzLiczbe(string tekst, int pozycjaZnaku)
         pozycjaZnaku ++;
     }
     return liczba;
+}
+
+int MetodyPomocnicze::konwersjaStringNaInt(string liczba)
+{
+    int liczbaInt;
+    istringstream iss(liczba);
+    iss >> liczbaInt;
+
+    return liczbaInt;
 }

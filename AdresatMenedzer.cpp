@@ -13,34 +13,32 @@ void AdresatMenedzer::dodajAdresata()
     plikZAdresatami.dopiszAdresataDoPliku(adresat);
 }
 
-void podajDaneNowegoAdresata()
+Adresat  AdresatMenedzer::podajDaneNowegoAdresata()
 {
     Adresat adresat;
 
-    adresat.pobierzId(++idOstatniegoAdresata);
-    adresat.pobierzIdAdresata(idZalogowanegoAdresata);
+    adresat.ustawId(++idOstatniegoAdresata);
+    adresat.ustawIdAdresata(idZalogowanegoAdresata);
 
     cout << "Podaj imie: ";
-    adresat.imie = MetodyPomocnicze::wczytajLinie();
-    adresat.pobierzImie(zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresat.imie));
+    adresat.ustawImie(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale( MetodyPomocnicze::wczytajLinie() ));
 
     cout << "Podaj nazwisko: ";
-    adresat.nazwisko = MetodyPomocnicze::wczytajLinie();
-    adresat.pobierzNazwisko(zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresat.nazwisko));
+    adresat.ustawNazwisko(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale( MetodyPomocnicze::wczytajLinie() ));
 
     cout << "Podaj numer telefonu: ";
-    adresat.pobierzNumerTelefonu(MetodyPomocnicze::wczytajLinie());
+    adresat.ustawNumerTelefonu(MetodyPomocnicze::wczytajLinie());
 
     cout << "Podaj email: ";
-    adresat.pobierzEmail(MetodyPomocnicze::wczytajLinie());
+    adresat.ustawEmail(MetodyPomocnicze::wczytajLinie());
 
     cout << "Podaj adres: ";
-    adresat.pobierzAdres(MetodyPomocnicze::wczytajLinie());
+    adresat.ustawAdres(MetodyPomocnicze::wczytajLinie());
 
     return adresat;
 }
 
-void AdresatMenedzer::pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami)
+Adresat AdresatMenedzer::pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami)
 {
     Adresat adresat;
     string pojedynczaDanaAdresata = "";
@@ -57,25 +55,25 @@ void AdresatMenedzer::pobierzDaneAdresata(string daneAdresataOddzielonePionowymi
             switch(numerPojedynczejDanejAdresata)
             {
             case 1:
-                adresat.id = atoi(pojedynczaDanaAdresata.c_str());
+                adresat.ustawId( atoi(pojedynczaDanaAdresata.c_str()) );
                 break;
             case 2:
-                adresat.idUzytkownika = atoi(pojedynczaDanaAdresata.c_str());
+                adresat.ustawIdAdresata( atoi(pojedynczaDanaAdresata.c_str()) );
                 break;
             case 3:
-                adresat.imie = pojedynczaDanaAdresata;
+                adresat.ustawImie( pojedynczaDanaAdresata );
                 break;
             case 4:
-                adresat.nazwisko = pojedynczaDanaAdresata;
+                adresat.ustawNazwisko( pojedynczaDanaAdresata );
                 break;
             case 5:
-                adresat.numerTelefonu = pojedynczaDanaAdresata;
+                adresat.ustawNumerTelefonu( pojedynczaDanaAdresata );
                 break;
             case 6:
-                adresat.email = pojedynczaDanaAdresata;
+                adresat.ustawEmail( pojedynczaDanaAdresata );
                 break;
             case 7:
-                adresat.adres = pojedynczaDanaAdresata;
+                adresat.ustawAdres( pojedynczaDanaAdresata );
                 break;
             }
             pojedynczaDanaAdresata = "";
@@ -85,10 +83,10 @@ void AdresatMenedzer::pobierzDaneAdresata(string daneAdresataOddzielonePionowymi
     return adresat;
 }
 
-void AdresatMenedzer::pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami)
+int AdresatMenedzer::pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami)
 {
     int pozycjaRozpoczeciaIdUzytkownika = daneJednegoAdresataOddzielonePionowymiKreskami.find_first_of('|') + 1;
-    int idUzytkownika = konwersjaStringNaInt(pobierzLiczbe(daneJednegoAdresataOddzielonePionowymiKreskami, pozycjaRozpoczeciaIdUzytkownika));
+    int idUzytkownika = MetodyPomocnicze::konwersjaStringNaInt(MetodyPomocnicze::pobierzLiczbe(daneJednegoAdresataOddzielonePionowymiKreskami, pozycjaRozpoczeciaIdUzytkownika));
 
     return idUzytkownika;
 }
@@ -113,14 +111,14 @@ void AdresatMenedzer::wyswietlWszystkichAdresatow()
     system("pause");
 }
 
-void wyswietlDaneAdresata(Adresat adresat)
+void AdresatMenedzer::wyswietlDaneAdresata(Adresat adresat)
 {
-    cout << endl << "Id:                 " << adresat.id << endl;
-    cout << "Imie:               " << adresat.imie << endl;
-    cout << "Nazwisko:           " << adresat.nazwisko << endl;
-    cout << "Numer telefonu:     " << adresat.numerTelefonu << endl;
-    cout << "Email:              " << adresat.email << endl;
-    cout << "Adres:              " << adresat.adres << endl;
+    cout << endl << "Id:                 "  << adresat.pobierzId() << endl;
+    cout << "Imie:               "              << adresat.pobierzImie() << endl;
+    cout << "Nazwisko:           "        << adresat.pobierzNazwisko() << endl;
+    cout << "Numer telefonu:     "  << adresat.pobierzNumerTelefonu() << endl;
+    cout << "Email:              "             << adresat.pobierzEmail() << endl;
+    cout << "Adres:              "            << adresat.pobierzAdres() << endl;
 }
 
 void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku()
@@ -130,13 +128,13 @@ void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku()
     string daneJednegoAdresataOddzielonePionowymiKreskami = "";
     string daneOstaniegoAdresataWPliku = "";
     fstream plikTekstowy;
-    plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::in);
+    plikTekstowy.open(plikZAdresatami.pobierzNazwePlikuZAdresatami().c_str(), ios::in);
 
     if (plikTekstowy.good() == true)
     {
         while (getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami))
         {
-            if(idZalogowanegoUzytkownika == pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(daneJednegoAdresataOddzielonePionowymiKreskami))
+            if(idZalogowanegoUzytkownika == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneJednegoAdresataOddzielonePionowymiKreskami))
             {
                 adresat = pobierzDaneAdresata(daneJednegoAdresataOddzielonePionowymiKreskami);
                 adresaci.push_back(adresat);

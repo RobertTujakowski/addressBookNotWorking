@@ -5,56 +5,56 @@ void Adresat::ustawId(int noweId)
     if (noweId >= 0)
         id = noweId;
 }
-void ustawIdAdresata(int noweIdAdresata)
+void Adresat::ustawIdAdresata(int noweIdAdresata)
 {
     idAdresata = noweIdAdresata;
 }
-void ustawImie(string noweImie)
+void Adresat::ustawImie(string noweImie)
 {
     imie = noweImie;
 }
-void ustawNazwisko(string noweNazwisko)
+void Adresat::ustawNazwisko(string noweNazwisko)
 {
     nazwisko = noweNazwisko;
 }
-void ustawNumerTelefonu(string nowyNumerTelefonu)
+void Adresat::ustawNumerTelefonu(string nowyNumerTelefonu)
 {
     numerTelefonu = nowyNumerTelefonu;
 }
-void ustawEmail(string nowyEmail)
+void Adresat::ustawEmail(string nowyEmail)
 {
     email = nowyEmail;
 }
-void ustawAdres(string nowyAdres)
+void Adresat::ustawAdres(string nowyAdres)
 {
     adres = nowyAdres;
 }
 
-int pobierzId()
+int Adresat::pobierzId()
 {
     return id;
 }
-int pobierzIdUzytkownika()
+int Adresat::pobierzIdAdresata()
 {
-    return idUzytkownika;
+    return idAdresata;
 }
-string pobierzImie()
+string Adresat::pobierzImie()
 {
     return imie;
 }
-string pobierzNazwisko()
+string Adresat::pobierzNazwisko()
 {
     return nazwisko;
 }
-string pobierzNumerTelefonu()
+string Adresat::pobierzNumerTelefonu()
 {
     return numerTelefonu;
 }
-string pobierzEmail()
+string Adresat::pobierzEmail()
 {
     return email;
 }
-string pobierzAdres()
+string Adresat::pobierzAdres()
 {
     return adres;
 }
