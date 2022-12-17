@@ -45,7 +45,7 @@ string PlikZAdresatami::zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKre
     string liniaZDanymiAdresata = "";
 
     liniaZDanymiAdresata += MetodyPomocnicze::konwerjsaIntNaString(adresat.pobierzId()) + '|';
-    liniaZDanymiAdresata += MetodyPomocnicze::konwerjsaIntNaString(adresat.pobierzIdAdresata()) + '|';
+    liniaZDanymiAdresata += MetodyPomocnicze::konwerjsaIntNaString(adresat.pobierzIdUzytkownika()) + '|';
     liniaZDanymiAdresata += adresat.pobierzImie() + '|';
     liniaZDanymiAdresata += adresat.pobierzNazwisko() + '|';
     liniaZDanymiAdresata += adresat.pobierzNumerTelefonu() + '|';
