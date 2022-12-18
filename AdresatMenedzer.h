@@ -31,6 +31,7 @@ public:
     void dodajAdresata();
     void wyswietlWszystkichAdresatow();
     void ustawIdZalogowanegoUzytkownika(int idUzytkownikaAktualny);
+    void wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
 };
 
 #endif

@@ -14,7 +14,7 @@ void KsiazkaAdresowa::logowanieUzytkownika()
     if (uzytkownikMenedzer.czyUzytkownikJestZalogowany())
     {
         adresatMenedzer.ustawIdZalogowanegoUzytkownika( uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika() );
-        PlikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+        adresatMenedzer.wczytajAdresatowZalogowanegoUzytkownikaZPliku( uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika() );
     }
 }
 void KsiazkaAdresowa::wylogujUzytkownika()

@@ -72,3 +72,8 @@ void AdresatMenedzer::ustawIdZalogowanegoUzytkownika(int idUzytkownikaAktualny)
 {
     idZalogowanegoUzytkownika = idUzytkownikaAktualny;
 }
+
+void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika)
+{
+    plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku( idZalogowanegoUzytkownika );
+}
