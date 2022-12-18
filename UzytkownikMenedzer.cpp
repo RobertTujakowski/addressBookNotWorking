@@ -73,7 +73,6 @@ void UzytkownikMenedzer::wczytajUzytkownikowZPliku()
 
 void UzytkownikMenedzer::logowanieUzytkownika()
 {
-    Uzytkownik uzytkownik;
     string login = "", haslo = "";
 
     cout << endl << "Podaj login: ";
@@ -139,5 +138,8 @@ int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika()
 
 bool UzytkownikMenedzer::czyUzytkownikJestZalogowany()
 {
-
+    if (idZalogowanegoUzytkownika > 0)
+        return true;
+    else
+        return false;
 }

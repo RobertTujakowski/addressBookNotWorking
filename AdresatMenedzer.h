@@ -20,17 +20,14 @@ class AdresatMenedzer
     int idOstatniegoAdresata;
     int idZalogowanegoUzytkownika;
 
-    Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
     Adresat  podajDaneNowegoAdresata();
-    int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
     void wyswietlDaneAdresata(Adresat adresat);
 
 public:
     AdresatMenedzer(string nazwaPlikuZAdresatami) : plikZAdresatami(nazwaPlikuZAdresatami)
     {
-
+        idOstatniegoAdresata = 0;
     };
-    void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
     void dodajAdresata();
     void wyswietlWszystkichAdresatow();
     void ustawIdZalogowanegoUzytkownika(int idUzytkownikaAktualny);

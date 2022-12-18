@@ -13,7 +13,6 @@ class KsiazkaAdresowa
     UzytkownikMenedzer  uzytkownikMenedzer;
     AdresatMenedzer          adresatMenedzer;
 
-
 public:
     KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami) : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), adresatMenedzer(nazwaPlikuZAdresatami)
     {
@@ -28,7 +27,7 @@ public:
     int pobierzIdZalogowanegoUzytkownika();
     bool czyUzytkownikJestZalogowany();
 //---------------------------------------------------------------------------------------------------
-    void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+    //void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
     void dodajAdresata();
     void wyswietlWszystkichAdresatow();
 };
