@@ -109,7 +109,6 @@ void UzytkownikMenedzer::logowanieUzytkownika()
 void UzytkownikMenedzer::wylogujUzytkownika()
 {
     idZalogowanegoUzytkownika = 0;
-    uzytkownicy.clear();
 }
 
 void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika()

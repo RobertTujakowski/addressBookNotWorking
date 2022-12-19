@@ -27,7 +27,6 @@ public:
     int pobierzIdZalogowanegoUzytkownika();
     bool czyUzytkownikJestZalogowany();
 //---------------------------------------------------------------------------------------------------
-    //void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
     void dodajAdresata();
     void wyswietlWszystkichAdresatow();
 };

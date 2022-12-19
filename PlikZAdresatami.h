@@ -9,7 +9,6 @@
 #include "MetodyPomocnicze.h"
 
 using namespace std;
-vector <Adresat> adresaci;
 
 class PlikZAdresatami
 {
