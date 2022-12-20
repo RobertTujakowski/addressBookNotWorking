@@ -17,9 +17,10 @@ Adresat  AdresatMenedzer::podajDaneNowegoAdresata()
 {
     Adresat adresat;
 
-    adresat.ustawId(++idOstatniegoAdresata);
+    int idOst = plikZAdresatami.pobierzIdOstatniegoAdresata() + 1;
+
+    adresat.ustawId(idOst);
     adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
-    cout<<"idOstatniegoAdresata="<<idOstatniegoAdresata<<endl;
 
     cout << "Podaj imie: ";
     adresat.ustawImie(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale( MetodyPomocnicze::wczytajLinie() ));
