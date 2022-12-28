@@ -8,12 +8,10 @@ int main()
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
     ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
 
-    int idZalogowanegoUzytkownika = 0;
     char wybor;
-
      while (true)
     {
-        if (ksiazkaAdresowa.czyUzytkownikJestZalogowany())
+        if (!ksiazkaAdresowa.czyUzytkownikJestZalogowany())
         {
             wybor = ksiazkaAdresowa.wybierzOpcjeZMenuGlownego();
 
