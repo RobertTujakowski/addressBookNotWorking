@@ -66,11 +66,6 @@ void UzytkownikMenedzer::wypiszWszystkichUzytkownikow()
     }
 }
 
-void UzytkownikMenedzer::wczytajUzytkownikowZPliku()
-{
-    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
-}
-
 void UzytkownikMenedzer::logowanieUzytkownika()
 {
     string login = "", haslo = "";
@@ -113,21 +108,29 @@ void UzytkownikMenedzer::wylogujUzytkownika()
 
 void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika()
 {
-    string noweHaslo = "";
-    cout << "Podaj nowe haslo: ";
-    noweHaslo = MetodyPomocnicze::wczytajLinie();
-
-    for (vector <Uzytkownik>::iterator itr = uzytkownicy.begin(); itr != uzytkownicy.end(); itr++)
+    if (idZalogowanegoUzytkownika > 0)
     {
-        if (itr -> pobierzId() == idZalogowanegoUzytkownika)
-        {
-            itr -> ustawHaslo(noweHaslo) ;
-            cout << "Haslo zostalo zmienione." << endl << endl;
-            system("pause");
-        }
-    }
+        string noweHaslo = "";
+        cout << "Podaj nowe haslo: ";
+        noweHaslo = MetodyPomocnicze::wczytajLinie();
 
-    plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
+        for (vector <Uzytkownik>::iterator itr = uzytkownicy.begin(); itr != uzytkownicy.end(); itr++)
+        {
+            if (itr -> pobierzId() == idZalogowanegoUzytkownika)
+            {
+                itr -> ustawHaslo(noweHaslo) ;
+                cout << "Haslo zostalo zmienione." << endl << endl;
+                system("pause");
+            }
+        }
+
+        plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
+    }
+    else
+    {
+        cout << "Aby zmienic haslo, nalezy sie najpierw zalogowac" << endl;
+        system("pause");
+    }
 }
 
 int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika()

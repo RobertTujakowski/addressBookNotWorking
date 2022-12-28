@@ -10,25 +10,35 @@ using namespace std;
 
 class KsiazkaAdresowa
 {
-    UzytkownikMenedzer  uzytkownikMenedzer;
-    AdresatMenedzer          adresatMenedzer;
+    UzytkownikMenedzer  uzytkownikMenedzer;  // tworzone wraz z ksiazka adresowa
+    AdresatMenedzer          *adresatMenedzer;
+    const string  NAZWA_PLIKU_Z_ADRESATAMI;
 
 public:
-    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami) : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), adresatMenedzer(nazwaPlikuZAdresatami)
+    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami)
+        : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami)
     {
-        uzytkownikMenedzer.wczytajUzytkownikowZPliku();
+        adresatMenedzer = NULL; //puste miejsce w pamieci
     };
+    ~KsiazkaAdresowa()
+    {
+        delete adresatMenedzer; //usuwa to na co wskazuje ten adres w pamiêci
+        adresatMenedzer = NULL;
+    }
 //---------------------------------------------------------------------------------------------------
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
     void logowanieUzytkownika();
     void wylogujUzytkownika();
     void zmianaHaslaZalogowanegoUzytkownika();
-    int pobierzIdZalogowanegoUzytkownika();
+    int    pobierzIdZalogowanegoUzytkownika();
     bool czyUzytkownikJestZalogowany();
 //---------------------------------------------------------------------------------------------------
     void dodajAdresata();
     void wyswietlWszystkichAdresatow();
+ //---------------------------------------------------------------------------------------------------
+    char wybierzOpcjeZMenuGlownego();
+    char wybierzOpcjeZMenuUzytkownika();
 };
 
 #endif
