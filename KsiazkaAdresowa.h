@@ -11,7 +11,7 @@ using namespace std;
 class KsiazkaAdresowa
 {
     UzytkownikMenedzer  uzytkownikMenedzer;  // tworzone wraz z ksiazka adresowa
-    AdresatMenedzer          *adresatMenedzer;
+    AdresatMenedzer *adresatMenedzer;
     const string  NAZWA_PLIKU_Z_ADRESATAMI;
 
 public:

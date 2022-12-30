@@ -22,11 +22,6 @@ Adresat  AdresatMenedzer::podajDaneNowegoAdresata()
     Adresat adresat;
     string imie, nazwisko, numerTelefonu, email, adres;
 
-    int idOst = plikZAdresatami.pobierzIdOstatniegoAdresata() + 1;
-
-    adresat.ustawId( plikZAdresatami.pobierzIdOstatniegoAdresata() + 1 );
-    adresat.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
-
     cout << "Podaj imie: ";
     imie = MetodyPomocnicze::wczytajLinie();
     imie = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(imie);
@@ -37,7 +32,6 @@ Adresat  AdresatMenedzer::podajDaneNowegoAdresata()
 
     cout << "Podaj numer telefonu: ";
     numerTelefonu = MetodyPomocnicze::wczytajLinie();
-    adresat.ustawNumerTelefonu(MetodyPomocnicze::wczytajLinie());
 
     cout << "Podaj email: ";
     email = MetodyPomocnicze::wczytajLinie();
@@ -45,6 +39,8 @@ Adresat  AdresatMenedzer::podajDaneNowegoAdresata()
     cout << "Podaj adres: ";
     adres = MetodyPomocnicze::wczytajLinie();
 
+    adresat.ustawId( plikZAdresatami.pobierzIdOstatniegoAdresata() + 1 );
+    adresat.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
     adresat.ustawImie(imie);
     adresat.ustawNazwisko(nazwisko);
     adresat.ustawNumerTelefonu(numerTelefonu);
