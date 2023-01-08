@@ -14,7 +14,7 @@ void KsiazkaAdresowa::logowanieUzytkownika()
     if (uzytkownikMenedzer.czyUzytkownikJestZalogowany())
     {
         adresatMenedzer = new AdresatMenedzer(NAZWA_PLIKU_Z_ADRESATAMI, uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
-        // dependency injection - wstrzykiwanie zaleÅ¼noÅ›ci do innej klasy - za pomocÄ… metod lub w konstruktorze
+        // dependency injection - wstrzykiwanie zale¿noœci do innej klasy - za pomoc¹ metod lub w konstruktorze
     }
 }
 void KsiazkaAdresowa::wylogujUzytkownika()
@@ -48,6 +48,12 @@ void KsiazkaAdresowa::dodajAdresata()
         system("pause");
     }
 }
+
+void KsiazkaAdresowa::usunAdresata()
+{
+    adresatMenedzer->dodajAdresata();
+}
+
 void KsiazkaAdresowa::wyswietlWszystkichAdresatow()
 {
     if (uzytkownikMenedzer.czyUzytkownikJestZalogowany())

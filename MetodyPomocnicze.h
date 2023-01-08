@@ -14,9 +14,9 @@ public:
     static string wczytajLinie();
     static string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
     static string pobierzLiczbe(string tekst, int pozycjaZnaku);
-    static int konwersjaStringNaInt(string liczba);
-    static char wczytajZnak();
-    int wczytajLiczbeCalkowita();
+    static int    konwersjaStringNaInt(string liczba);
+    static char   wczytajZnak();
+    static int    wczytajLiczbeCalkowita();
 };
 
 #endif
