@@ -51,7 +51,7 @@ void KsiazkaAdresowa::dodajAdresata()
 
 void KsiazkaAdresowa::usunAdresata()
 {
-    adresatMenedzer->dodajAdresata();
+    adresatMenedzer->usunAdresata();
 }
 
 void KsiazkaAdresowa::wyswietlWszystkichAdresatow()

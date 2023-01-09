@@ -17,13 +17,9 @@ class AdresatMenedzer
     const int ID_ZALOGOWANEGO_UZYTKOWNIKA;
     vector <Adresat> adresaci;
     PlikZAdresatami plikZAdresatami;
-    string nazwaTymczasowegoPlikuZAdresatami;
 
-    Adresat  podajDaneNowegoAdresata();
+    Adresat podajDaneNowegoAdresata();
     void wyswietlDaneAdresata(Adresat adresat);
-    void usunWybranegoAdresataZPliku(int idAdresata);
-    void usunPlik(string nazwaPlikuZRozszerzeniem);
-    void zmienNazwePliku(string staraNazwa, string nowaNazwa);
     int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
     int podajIdWybranegoAdresata();
 
@@ -32,7 +28,6 @@ public:
         : ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika) , plikZAdresatami(nazwaPlikuZAdresatami)
     {
         adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
-        nazwaTymczasowegoPlikuZAdresatami = "Adresaci_tymczasowo.txt";
     };
     void dodajAdresata();
     void usunAdresata();

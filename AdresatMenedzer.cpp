@@ -17,87 +17,6 @@ void AdresatMenedzer::dodajAdresata()
     system ("pause");
 }
 
-int AdresatMenedzer::podajIdWybranegoAdresata()
-{
-    int idWybranegoAdresata = 0;
-    cout << "Podaj numer ID Adresata: ";
-    idWybranegoAdresata  = MetodyPomocnicze::wczytajLiczbeCalkowita();
-    return idWybranegoAdresata;
-}
-
-void AdresatMenedzer::usunAdresata()
-{
-    int idUsuwanegoAdresata = 0;
-
-    system("cls");
-    cout << ">>> USUWANIE WYBRANEGO ADRESATA <<<" << endl << endl;
-    idUsuwanegoAdresata = podajIdWybranegoAdresata();
-
-    char znak;
-    bool czyIstniejeAdresat = false;
-
-    for (vector <Adresat>::iterator itr = adresaci.begin(); itr != adresaci.end(); itr++)
-    {
-        if (itr -> id == idUsuwanegoAdresata)
-        {
-            czyIstniejeAdresat = true;
-            cout << endl << "Potwierdz naciskajac klawisz 't': ";
-            znak = MetodyPomocnicze::wczytajZnak();
-            if (znak == 't')
-            {
-                //numerLiniiUsuwanegoAdresata = zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata);    // polaczyc
-                //usunWybranaLinieWPliku(numerLiniiUsuwanegoAdresata);                                    // polaczyc
-                usunWybranegoAdresataZPliku(idUsuwanegoAdresata);                                         // nowa funkcja
-                adresaci.erase(itr);
-                cout << endl << endl << "Szukany adresat zostal USUNIETY" << endl << endl;
-                system("pause");
-                //return idUsuwanegoAdresata;
-            }
-            else
-            {
-                cout << endl << endl << "Wybrany adresat NIE zostal usuniety" << endl << endl;
-                system("pause");
-                //return 0;
-            }
-        }
-    }
-    if (czyIstniejeAdresat == false)
-    {
-        cout << endl << "Nie ma takiego adresata w ksiazce adresowej" << endl << endl;
-        system("pause");
-    }
-    //return 0;
-}
-
-void AdresatMenedzer::usunWybranegoAdresataZPliku(int idAdresata)
-{
-    string  daneJednegoAdresataOddzielonePionowymiKreskami = "";
-    fstream odczytywanyPlikTekstowy, tymczasowyPlikTekstowy;
-    int iloscSkopiowanychLinii = 0;
-
-    odczytywanyPlikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::in);
-    tymczasowyPlikTekstowy.open(nazwaTymczasowegoPlikuZAdresatami.c_str(), ios::out | ios::app);
-
-    if (odczytywanyPlikTekstowy.good() == true && idAdresata != 0)
-    {
-        while(getline(odczytywanyPlikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami))
-        {
-            if (idAdresata != pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneJednegoAdresataOddzielonePionowymiKreskami))
-            {
-                if (iloscSkopiowanychLinii > 0) tymczasowyPlikTekstowy << endl;
-                tymczasowyPlikTekstowy << daneJednegoAdresataOddzielonePionowymiKreskami;
-                iloscSkopiowanychLinii++;
-            }
-        }
-    }
-
-    odczytywanyPlikTekstowy.close();
-    tymczasowyPlikTekstowy.close();
-
-    usunPlik(nazwaPlikuZAdresatami);
-    zmienNazwePliku(nazwaTymczasowegoPlikuZAdresatami, nazwaPlikuZAdresatami);
-}
-
 int AdresatMenedzer::pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami)
 {
     int pozycjaRozpoczeciaIdAdresata = 0;
@@ -105,21 +24,7 @@ int AdresatMenedzer::pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(strin
     return idAdresata;
 }
 
-void AdresatMenedzer::usunPlik(string nazwaPlikuZRozszerzeniem)
-{
-    if (remove(nazwaPlikuZRozszerzeniem.c_str()) == 0) {}
-    else
-        cout << "Nie udalo sie usunac pliku " << nazwaPlikuZRozszerzeniem << endl;
-}
-
-void AdresatMenedzer::zmienNazwePliku(string staraNazwa, string nowaNazwa)
-{
-    if (rename(staraNazwa.c_str(), nowaNazwa.c_str()) == 0) {}
-    else
-        cout << "Nazwa pliku nie zostala zmieniona." << staraNazwa << endl;
-}
-
-Adresat  AdresatMenedzer::podajDaneNowegoAdresata()
+Adresat AdresatMenedzer::podajDaneNowegoAdresata()
 {
     Adresat adresat;
     string imie, nazwisko, numerTelefonu, email, adres;
@@ -180,4 +85,52 @@ void AdresatMenedzer::wyswietlDaneAdresata(Adresat adresat)
     cout << "Numer telefonu:     "  << adresat.pobierzNumerTelefonu() << endl;
     cout << "Email:              "             << adresat.pobierzEmail() << endl;
     cout << "Adres:              "            << adresat.pobierzAdres() << endl;
+}
+
+void AdresatMenedzer::usunAdresata()
+{
+    int idUsuwanegoAdresata = 0;
+
+    system("cls");
+    cout << ">>> USUWANIE WYBRANEGO ADRESATA <<<" << endl << endl;
+    idUsuwanegoAdresata = podajIdWybranegoAdresata();
+
+    char znak;
+    bool czyIstniejeAdresat = false;
+
+    for (vector <Adresat>::iterator itr = adresaci.begin(); itr != adresaci.end(); itr++)
+    {
+        if (itr -> pobierzId() == idUsuwanegoAdresata)
+        {
+            czyIstniejeAdresat = true;
+            cout << endl << "Potwierdz naciskajac klawisz 't': ";
+            znak = MetodyPomocnicze::wczytajZnak();
+            if (znak == 't')
+            {
+                plikZAdresatami.usunWybranegoAdresataZPliku(idUsuwanegoAdresata);
+                adresaci.erase(itr);
+                cout << endl << endl << "Wybrany adresat zostal USUNIETY" << endl << endl;
+                system("pause");
+                break; // inaczej po skasowaniu ostatniego nie wychodzi z pêtli !!!
+            }
+            else
+            {
+                cout << endl << endl << "Wybrany adresat NIE zostal usuniety" << endl << endl;
+                system("pause");
+            }
+        }
+    }
+    if (czyIstniejeAdresat == false)
+    {
+        cout << endl << "Nie ma takiego adresata w ksiazce adresowej" << endl << endl;
+        system("pause");
+    }
+}
+
+int AdresatMenedzer::podajIdWybranegoAdresata()
+{
+    int idWybranegoAdresata = 0;
+    cout << "Podaj numer ID Adresata: ";
+    idWybranegoAdresata  = MetodyPomocnicze::wczytajLiczbeCalkowita();
+    return idWybranegoAdresata;
 }
