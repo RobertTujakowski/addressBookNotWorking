@@ -25,7 +25,7 @@ public:
         delete adresatMenedzer; // usuwa to na co wskazuje ten adres w pamieci
         adresatMenedzer = NULL;
     }
-//---------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
     void logowanieUzytkownika();
@@ -33,11 +33,14 @@ public:
     void zmianaHaslaZalogowanegoUzytkownika();
     int  pobierzIdZalogowanegoUzytkownika();
     bool czyUzytkownikJestZalogowany();
-//---------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
     void dodajAdresata();
     void usunAdresata();
     void wyswietlWszystkichAdresatow();
- //---------------------------------------------------------------------------------------------------
+    void wyszukajAdresatowPoImieniu();
+    void wyszukajAdresatowPoNazwisku();
+    void edytujAdresata();
+ //-----------------------------------------------------------------------------------------------------
     char wybierzOpcjeZMenuGlownego();
     char wybierzOpcjeZMenuUzytkownika();
 };

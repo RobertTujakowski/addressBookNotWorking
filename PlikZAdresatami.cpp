@@ -193,3 +193,35 @@ void PlikZAdresatami::usunWybranegoAdresataZPliku(int idAdresata)
     usunPlik(NAZWA_PLIKU_Z_ADRESATAMI);
     zmienNazwePliku(nazwaTymczasowegoPlikuZAdresatami, NAZWA_PLIKU_Z_ADRESATAMI);
 }
+
+void PlikZAdresatami::zaktualizujDaneWybranegoAdresata(Adresat adresatZmieniany, int idAdresata)
+{
+    string  daneJednegoAdresataOddzielonePionowymiKreskami = "";
+    fstream odczytywanyPlikTekstowy, tymczasowyPlikTekstowy;
+    int iloscSkopiowanychLinii = 0;
+
+    odczytywanyPlikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
+    tymczasowyPlikTekstowy.open(nazwaTymczasowegoPlikuZAdresatami.c_str(), ios::out | ios::app);
+
+    while(getline(odczytywanyPlikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami))
+    {
+        if (idAdresata != pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneJednegoAdresataOddzielonePionowymiKreskami))
+        {
+            if (iloscSkopiowanychLinii > 0) tymczasowyPlikTekstowy << endl;
+            tymczasowyPlikTekstowy << daneJednegoAdresataOddzielonePionowymiKreskami;
+            iloscSkopiowanychLinii++;
+        }
+        else
+        {
+            if (iloscSkopiowanychLinii > 0) tymczasowyPlikTekstowy << endl;
+            tymczasowyPlikTekstowy << zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresatZmieniany);
+            iloscSkopiowanychLinii++;
+        }
+    }
+
+    odczytywanyPlikTekstowy.close();
+    tymczasowyPlikTekstowy.close();
+
+    usunPlik(NAZWA_PLIKU_Z_ADRESATAMI);
+    zmienNazwePliku(nazwaTymczasowegoPlikuZAdresatami, NAZWA_PLIKU_Z_ADRESATAMI);
+}

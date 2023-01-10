@@ -35,6 +35,7 @@ public:
     string pobierzNazwePlikuZAdresatami();
     int  pobierzIdOstatniegoAdresata();
     void usunWybranegoAdresataZPliku(int idAdresata);
+    void zaktualizujDaneWybranegoAdresata(Adresat adresatZmieniany, int idAdresata);
 };
 
 #endif
